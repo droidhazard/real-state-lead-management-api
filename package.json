@@ -1,0 +1,26 @@
+{
+  "name": "real-state-lead-management-api",
+  "version": "1.0.0",
+  "description": "A simple but scalable api for adding and managing leads.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/droidhazard/real-state-lead-management-api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "lead",
+    "api",
+    "crm"
+  ],
+  "author": "Zohaib Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/droidhazard/real-state-lead-management-api/issues"
+  },
+  "homepage": "https://github.com/droidhazard/real-state-lead-management-api#readme"
+}
