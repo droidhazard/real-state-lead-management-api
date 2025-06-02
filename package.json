@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A simple but scalable api for adding and managing leads.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
