@@ -6,13 +6,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8088;
 
-connectDB()
-  .then(() => {
-    console.log(`^^^SUCCESSFULLY connected to Database.`);
-    app.listen(PORT, () => {
-      console.log(`^^^SUCCESSFULLY listening on port: `, PORT);
-    });
+app.use(
+  express.json({
+    limit: "16kb",
   })
-  .catch((error) => {
-    console.log(`^^^FAILED to connect to Database, `, error);
+);
+
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`^^^SUCCESSFULLY listening on port: `, PORT);
   });
+});
+
+// * Import Routes
+import leadRouter from "./routes/user.routes.js";
+
+// * Declare Routes
+app.use("/api/v1/lead", leadRouter);
