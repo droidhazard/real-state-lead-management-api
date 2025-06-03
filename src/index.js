@@ -1,16 +1,18 @@
-import mongoose from "mongoose";
 import { connectDB } from "./database/index.js";
-import { UserTest } from "./models/user.model.js";
+import express from "express";
+import dotenv from "dotenv";
 
-connectDB();
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 8088;
 
-const newUser = await UserTest.create({
-  name: "Josh",
-});
-
-if (newUser) {
-  console.log("user saved");
-}
-if (!newUser) {
-  console.log("user create failed");
-}
+connectDB()
+  .then(() => {
+    console.log(`^^^SUCCESSFULLY connected to Database.`);
+    app.listen(PORT, () => {
+      console.log(`^^^SUCCESSFULLY listening on port: `, PORT);
+    });
+  })
+  .catch((error) => {
+    console.log(`^^^FAILED to connect to Database, `, error);
+  });
