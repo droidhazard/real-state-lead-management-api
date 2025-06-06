@@ -46,4 +46,10 @@ async function getLead(req, res) {
   const lead = await Lead.findById(leadId);
   res.status(200).json({ message: "success", lead });
 }
-export { createLead, getLeads, getLead };
+
+async function deleteLead(req, res) {
+  const leadId = req.params.id;
+  const deletedLead = await Lead.findByIdAndDelete(leadId);
+  res.status(200).json({ message: "success", lead: deletedLead });
+}
+export { createLead, getLeads, getLead, deleteLead };
