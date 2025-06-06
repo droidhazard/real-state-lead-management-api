@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Lead } from "../models/user.model.js";
+
 async function createLead(req, res) {
   const {
     firstName,
@@ -32,7 +33,11 @@ async function createLead(req, res) {
     street,
     notes,
   });
-  res.status(200).json({ msg: "success", lead: newLead });
+  res.status(201).json({ msg: "success", lead: newLead });
 }
 
-export { createLead };
+async function getLeads(req, res) {
+  const leads = await Lead.find();
+  res.status(200).json({ message: "success", leads });
+}
+export { createLead, getLeads };
