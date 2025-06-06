@@ -40,4 +40,10 @@ async function getLeads(req, res) {
   const leads = await Lead.find();
   res.status(200).json({ message: "success", leads });
 }
-export { createLead, getLeads };
+
+async function getLead(req, res) {
+  const leadId = req.params.id;
+  const lead = await Lead.findById(leadId);
+  res.status(200).json({ message: "success", lead });
+}
+export { createLead, getLeads, getLead };
