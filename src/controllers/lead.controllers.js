@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Lead } from "../models/user.model.js";
+import { Lead } from "../models/lead.model.js";
 
 async function createLead(req, res) {
   const {
@@ -36,11 +36,9 @@ async function createLead(req, res) {
   }
   const phoneValidateRegex = /^(\+1\s?)?(\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$/;
   if (!phoneValidateRegex.test(phoneNumber)) {
-    return res
-      .status(400)
-      .json({
-        message: `'phoneNumber' must be in valid US Phone number format.`,
-      });
+    return res.status(400).json({
+      message: `'phoneNumber' must be in valid US Phone number format.`,
+    });
   }
 
   const newLead = await Lead.create({
