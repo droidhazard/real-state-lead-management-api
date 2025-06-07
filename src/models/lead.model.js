@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const leadModel = new mongoose.Schema({
+const leadSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -70,4 +70,4 @@ const leadModel = new mongoose.Schema({
   },
 });
 
-export const Lead = mongoose.model("Lead", leadModel);
+export const Lead = mongoose.model("Lead", leadSchema);
