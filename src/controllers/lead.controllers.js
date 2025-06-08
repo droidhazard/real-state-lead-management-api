@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Lead } from "../models/lead.model.js";
+import { sendMail } from "../utils/mail.js";
 
 async function createLead(req, res) {
   const {
@@ -57,6 +58,72 @@ async function createLead(req, res) {
     notes,
   });
   res.status(201).json({ msg: "success", lead: newLead });
+
+  // * Send Email Notification
+  const htmlBody = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    h2 {
+      color: #333333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 8px;
+      vertical-align: top;
+    }
+    td.label {
+      font-weight: bold;
+      width: 30%;
+      color: #555;
+    }
+    tr:nth-child(even) {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+      <img src="https://photo-cdn2.icons8.com/0Er236iTdEWAGsv5_GiBtNPxbGEXUoRwH-hDmkZKWvU/rs:fit:1480:1072/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi84MDFkODE1YmU4/NTg0OWRlYmY5YWRi/MjZkZGQ1OGU3MC5q/cGc.jpg" width="400">
+    <h2>New Real Estate Lead Received</h2>
+    <table>
+      <tr><td class="label">First Name:</td><td>${firstName}</td></tr>
+      <tr><td class="label">Last Name:</td><td>${lastName}</td></tr>
+      <tr><td class="label">Email:</td><td>${email}</td></tr>
+      <tr><td class="label">Phone Number:</td><td>${phoneNumber}</td></tr>
+      <tr><td class="label">Message:</td><td>${message}</td></tr>
+      <tr><td class="label">Label:</td><td>${label}</td></tr>
+      <tr><td class="label">Estimated Amount:</td><td>${estimatedAmount}</td></tr>
+      <tr><td class="label">Company:</td><td>${company}</td></tr>
+      <tr><td class="label">Country:</td><td>${country}</td></tr>
+      <tr><td class="label">State:</td><td>${state}</td></tr>
+      <tr><td class="label">City:</td><td>${city}</td></tr>
+      <tr><td class="label">Street:</td><td>${street}</td></tr>
+      <tr><td class="label">Notes:</td><td>${notes}</td></tr>
+    </table>
+  </div>
+</body>
+</html>
+`;
+  sendMail(`New Lead received: ${firstName}`, htmlBody);
 }
 
 async function getLeads(req, res) {
