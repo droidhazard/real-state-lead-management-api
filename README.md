@@ -64,13 +64,3 @@ I am building a **secure, scalable backend API** that allows real estate agents 
 
 - Can be connected to a basic frontend (like a React contact form)
 - Can later be expanded to connect with tools like **Zapier**, **Google Sheets**, **WhatsApp**, etc.
-
----
-
-## 🚀 Bonus Value:
-
-I can later sell this as:
-
-- A **backend-only microservice**
-- A part of a **custom lead management dashboard**
-- A plug-and-play backend for any real estate website
