@@ -30,9 +30,9 @@ connectDB().then(() => {
 });
 
 // * Import Routes
-import leadRouter from "./routes/user.routes.js";
+import leadRouter from "./routes/lead.routes.js";
 import authRouter from "./routes/auth.routes.js";
 
 // * Declare Routes
 app.use("/api/v1/lead", leadRouter);
-app.use("/api/v1/user/", authRouter);
+app.use("/api/v1/user", authRouter);
