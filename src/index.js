@@ -34,5 +34,5 @@ import leadRouter from "./routes/lead.routes.js";
 import authRouter from "./routes/auth.routes.js";
 
 // * Declare Routes
-app.use("/api/v1/lead", leadRouter);
+app.use("/api/v1/leads", leadRouter);
 app.use("/api/v1/user", authRouter);

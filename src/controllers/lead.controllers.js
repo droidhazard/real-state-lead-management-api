@@ -144,4 +144,10 @@ async function deleteLead(req, res) {
   res.status(200).json({ message: "success", lead: deletedLead });
 }
 
-export { createLead, getLeads, getLead, deleteLead };
+async function expoortLeads(req, res) {
+  const leads = await Lead.find();
+  const leadsCount = await Lead.countDocuments();
+  res.status(200).json({ message: "success", leads, count: leadsCount });
+}
+
+export { createLead, getLeads, getLead, deleteLead, expoortLeads };

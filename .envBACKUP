@@ -3,5 +3,4 @@ DB_NAME=real_estate_lead_api
 PORT=8088
 JWT_SIGNING_SECRET=banana
 SG=***SENDGRIDAPIKEY***
-.
-SG_FROM=droidgamezzo@gmail.com
+SG_FROM=myfromemail
