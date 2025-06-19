@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { Lead } from "../models/lead.model.js";
 import { sendMail } from "../utils/mail.js";
+import { AsyncParser } from "json2csv";
+import fs from "fs";
 
 async function createLead(req, res) {
   const {
@@ -146,8 +148,27 @@ async function deleteLead(req, res) {
 
 async function expoortLeads(req, res) {
   const leads = await Lead.find();
+
+  // * Converting to CSV
+  const csvAsyncParser = new AsyncParser();
+  // const csvData = await csvAsyncParser.parse(leads).promise();
+  const csvData = await csvAsyncParser.parse(JSON.stringify(leads)).promise();
   const leadsCount = await Lead.countDocuments();
-  res.status(200).json({ message: "success", leads, count: leadsCount });
+
+  async function writeToFile() {
+    try {
+      await fs.writeFile("export.csv", csvData, () => {
+        console.log("file exported successfully.");
+      });
+    } catch (error) {
+      console.log(`Error while writing to csv file, ${error}`);
+    }
+  }
+
+  writeToFile();
+  res
+    .status(200)
+    .json({ message: "exported successfully", leadCount: leadsCount });
 }
 
 export { createLead, getLeads, getLead, deleteLead, expoortLeads };

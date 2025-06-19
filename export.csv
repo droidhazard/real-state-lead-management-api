@@ -1,0 +1,4 @@
+"_id","firstName","lastName","email","phoneNumber","message","label","estimatedAmount","company","country","city","state","street","notes","__v"
+"68408c9eef092008c2ed1dcf","City","Boy","cityboy21@gmail.com","+12015550132","just looking back to get my work done.","NEW",200,"noneCorp","US","New York","NY","123 example st","don't reply",0
+"6845d49630614e3346eb1c6c","1","1","some@one.com","2015550132","","NEW",,"","","","","","",0
+"6845d57030614e3346eb1c6e","Jacob","Sen","j@cob.com","2015550132","I wanna see eveything u hev","WARM",199,"noneCorp.","US","New York","NY","1024 example st","bye",0
